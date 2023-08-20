@@ -1,0 +1,15 @@
+#Home assistant docker compose
+#docker-compose -f /home/pi/docker-compose.yml up -d
+
+version: '3'
+services:
+  homeassistant:
+    container_name: home-assistant
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+    volumes:
+      - ./config:/config
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+   
